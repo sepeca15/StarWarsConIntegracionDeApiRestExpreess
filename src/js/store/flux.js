@@ -27,6 +27,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 					const res = await fetch("https://www.swapi.tech/api/people/");
 					const data = await res.json();
 					console.log("Async:", data);
+					setStore({
+						personajes: data.results
+					});
 				} catch (error) {
 					console.log(error);
 				}
@@ -35,6 +38,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 					const res = await fetch("https://www.swapi.tech/api/planets/");
 					const data = await res.json();
 					console.log("Async:", data);
+					setStore({
+						planetas: data.results
+					});
 				} catch (error) {
 					console.log(error);
 				}
