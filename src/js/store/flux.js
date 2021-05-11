@@ -23,12 +23,17 @@ const getState = ({ getStore, getActions, setStore }) => {
 			exampleFunction: () => {
 				getActions().changeColor(0, "green");
 			},
-			agregarFavoritos: (index, color) => {
-				setStore({ demo: demo });
+			agregarFavoritos: Favorito => {
+				const store = getStore();
+				const nuevoFavorito = store.favoritos.concat(Favorito);
+				setStore({ favoritos: nuevoFavorito });
 			},
-			eliminarFavorito: (index, color) => {
-				//reset the global store
-				setStore({ demo: demo });
+			eliminarFavorito: Favorito => {
+				const store = getStore();
+				var nuevoFavorito = store.favoritos.filter(favoritos => {
+					return favoritos !== Favorito;
+				});
+				setStore({ favoritos: nuevoFavorito });
 			},
 			loadSomeData: async () => {
 				//personajes

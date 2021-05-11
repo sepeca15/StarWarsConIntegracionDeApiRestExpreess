@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useContext, useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import "../../styles/card.scss";
 import { Link } from "react-router-dom";
+import { Context } from "../store/appContext";
 
 const CardPersonajes = props => {
+	const { store, actions } = useContext(Context);
 	const images = {
 		"C-3PO": "http://2.bp.blogspot.com/-jP2rNAhUPSI/VNrIfnz6hMI/AAAAAAAASMA/iV_euzBDuVM/s1600/C3PO-16.JPG",
 		"Luke Skywalker": "https://www.prensalibre.com/wp-content/uploads/2019/11/luke-skywalker-644x362.jpg",
@@ -19,6 +21,23 @@ const CardPersonajes = props => {
 		"Obi-Wan Kenobi":
 			"https://cdn.vox-cdn.com/thumbor/KnYjrcxAozD5Q8pmr3QAXsJCwag=/1400x1400/filters:format(jpeg)/cdn.vox-cdn.com/uploads/chorus_asset/file/6434955/obi-wan.0.jpg"
 	};
+	const [corazon, setCorazon] = useState(null);
+	useEffect(() => {
+		var resultado = store.favoritos.find((elemento, index) => {
+			return elemento == props.name;
+		});
+
+		setCorazon(resultado);
+	}, [store.favoritos]);
+	const hacerClick = () => {
+		if (corazon) {
+			actions.eliminarFavorito(props.name);
+		} else {
+			actions.agregarFavoritos(props.name);
+		}
+		// setHeart(!heart);
+	};
+
 	return (
 		<div>
 			<div className="card cardscroll m-2">
@@ -26,9 +45,21 @@ const CardPersonajes = props => {
 				<div className="card-body">
 					<h5 className="card-title">{props.name}</h5>
 					<p className="card-text">Sed pharetra justo tempor, congue purus quis, laoreet urna.</p>
-					<Link to={"/singlepersonajes/" + props.index}>
-						<span>Link to: {props.name}</span>
-					</Link>
+					<div className="d-flex justify-content-between">
+						<Link
+							to={"/singlepersonajes/" + props.index}
+							className="btn btn-outline-secondary text-secondary">
+							Leer mas..
+						</Link>
+						<i
+							onClick={() => hacerClick()}
+							className="far fa-heart btn btn-outline-secondary"
+							style={{
+								fontWeight: corazon ? "bold" : "",
+								color: corazon ? "rgb(185, 19, 19)" : "Black"
+							}}
+						/>
+					</div>
 				</div>
 			</div>
 		</div>
