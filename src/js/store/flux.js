@@ -14,12 +14,21 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 			],
 			personajes: [],
-			planetas: []
+			planetas: [],
+			favoritos: [],
+			detalles: []
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
 			exampleFunction: () => {
 				getActions().changeColor(0, "green");
+			},
+			agregarFavoritos: (index, color) => {
+				setStore({ demo: demo });
+			},
+			eliminarFavorito: (index, color) => {
+				//reset the global store
+				setStore({ demo: demo });
 			},
 			loadSomeData: async () => {
 				//personajes
@@ -61,6 +70,40 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 				//reset the global store
 				setStore({ demo: demo });
+			},
+			cargarDetallesPersonajes: async index => {
+				const store = getStore();
+				const url = store.personajes.map((elm, i) => {
+					if (i === index);
+					return elm.url;
+				});
+				try {
+					const res = await fetch({ url });
+					const data = await res.json();
+					console.log("Async:", data);
+					setStore({
+						detalles: data.result.properties
+					});
+				} catch (error) {
+					console.log(error);
+				}
+			},
+			cargarDetallesPlanetas: async index => {
+				const store = getStore();
+				const url = store.planetas.map((elm, i) => {
+					if (i === index);
+					return elm.url;
+				});
+				try {
+					const res = await fetch({ url });
+					const data = await res.json();
+					console.log("Async:", data);
+					setStore({
+						detalles: data.result.properties
+					});
+				} catch (error) {
+					console.log(error);
+				}
 			}
 		}
 	};
