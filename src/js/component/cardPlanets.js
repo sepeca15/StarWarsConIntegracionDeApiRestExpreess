@@ -25,7 +25,7 @@ const CardPlanetas = props => {
 	return (
 		<div>
 			<div className="card cardscroll m-2">
-				<img src={images[props.name]} className="card-img-top" alt="..." />
+				<img src={images[props.name]} style={{ width: 286, height: 286 }} className="card-img-top" alt="..." />
 				<div className="card-body">
 					<h5 className="card-title">{props.name}</h5>
 					<p className="card-text">Sed pharetra justo tempor, congue purus quis, laoreet urna.</p>
@@ -43,4 +43,4 @@ CardPlanetas.propTypes = {
 	index: PropTypes.number
 };
 
-export default Card;
+export default CardPlanetas;

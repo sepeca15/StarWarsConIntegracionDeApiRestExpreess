@@ -77,8 +77,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 					if (i === index);
 					return elm.url;
 				});
+				const urlIndex = url[index];
+				console.log(urlIndex);
 				try {
-					const res = await fetch({ url });
+					const res = await fetch(urlIndex);
 					const data = await res.json();
 					console.log("Async:", data);
 					setStore({
@@ -94,8 +96,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 					if (i === index);
 					return elm.url;
 				});
+				const urlIndex = url[index];
+				console.log(urlIndex);
 				try {
-					const res = await fetch({ url });
+					const res = await fetch(urlIndex);
 					const data = await res.json();
 					console.log("Async:", data);
 					setStore({
