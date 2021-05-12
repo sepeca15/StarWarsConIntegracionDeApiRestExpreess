@@ -7,8 +7,8 @@ import { Context } from "../store/appContext";
 export const Navbar = () => {
 	const { store, actions } = useContext(Context);
 	return (
-		<div className="container-fluid p-0">
-			<nav className="navbar navbar-light bg-light mb-3">
+		<div className="container-fluid p-5">
+			<nav className="navbar navbar-light bg-light mb-3 fixed-top">
 				<div className="container">
 					<Link to="/">
 						<img src={StarWars} width="60" height="40" alt="" title="Star Wars Logo" />
@@ -16,7 +16,7 @@ export const Navbar = () => {
 					<div className="ml-auto">
 						<Dropdown>
 							<Dropdown.Toggle variant="success" id="dropdown-basic">
-								Favoritos
+								Favoritos {store.favoritos.length}{" "}
 							</Dropdown.Toggle>
 
 							<Dropdown.Menu>
