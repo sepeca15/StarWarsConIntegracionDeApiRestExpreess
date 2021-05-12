@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useContext, useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import "../../styles/card.scss";
 import { Link } from "react-router-dom";
+import { Context } from "../store/appContext";
 
 const CardPlanetas = props => {
+	const { store, actions } = useContext(Context);
 	const images = {
 		Tatooine:
 			"https://media.cntraveler.com/photos/5727696bb161ad8b31235293/16:9/w_2560%2Cc_limit/GettyImages-143687829-tunisia.jpg",
@@ -22,16 +24,47 @@ const CardPlanetas = props => {
 		Kamino:
 			"https://lumiere-a.akamaihd.net/v1/images/databank_kamino_01_169_f9027822.jpeg?region=0%2C49%2C1560%2C780"
 	};
+	const [corazon, setCorazon] = useState(null);
+
+	useEffect(() => {
+		var resultado = store.favoritos.find((elemento, index) => {
+			return elemento == props.name;
+		});
+
+		setCorazon(resultado);
+	}, [store.favoritos]);
+
+	const hacerClick = () => {
+		if (corazon) {
+			actions.eliminarFavorito(props.name);
+		} else {
+			actions.agregarFavoritos(props.name);
+		}
+	};
+
 	return (
 		<div>
 			<div className="card cardscroll m-2">
 				<img src={images[props.name]} style={{ width: 286, height: 286 }} className="card-img-top" alt="..." />
 				<div className="card-body">
 					<h5 className="card-title">{props.name}</h5>
-					<p className="card-text">Sed pharetra justo tempor, congue purus quis, laoreet urna.</p>
-					<Link to={"/singleplanetas/" + props.index}>
-						<span>Link to: {props.name}</span>
-					</Link>
+					<p className="card-text">Uno dentro de tantos planetas del universo de Star Wars</p>
+					<div className="d-flex justify-content-between">
+						<Link
+							to={"/singleplanetas/" + props.index}
+							className="btn btn-outline-secondary text-secondary">
+							Leer mas..
+						</Link>
+						<i
+							onClick={() => hacerClick()}
+							className="far fa-heart btn btn-outline-secondary"
+							style={{
+								fontWeight: corazon ? "bold" : "",
+								color: corazon ? "rgb(185, 19, 19)" : "Black"
+							}}
+						/>
+					</div>
+					<div />
 				</div>
 			</div>
 		</div>

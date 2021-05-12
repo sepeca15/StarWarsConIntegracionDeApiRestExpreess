@@ -20,19 +20,22 @@ export const Navbar = () => {
 							</Dropdown.Toggle>
 
 							<Dropdown.Menu>
-								{store.favoritos.map((favorito, index) => {
-									return (
-										<Dropdown.Item key={index}>
-											{favorito}
-											<i
-												className="ml-2 far fa-trash-alt"
-												onClick={() => {
-													actions.eliminarFavorito(favorito);
-												}}
-											/>
-										</Dropdown.Item>
-									);
-								})}
+								{store.favoritos.length == 0
+									? "No hay favoritos"
+									: store.favoritos.map((favorito, index) => {
+											return (
+												<Dropdown.Item key={index}>
+													{favorito}
+
+													<i
+														className="ml-2 far fa-trash-alt"
+														onClick={() => {
+															actions.eliminarFavorito(favorito);
+														}}
+													/>
+												</Dropdown.Item>
+											);
+									  })}
 							</Dropdown.Menu>
 						</Dropdown>
 						{/* <div className="dropdown">

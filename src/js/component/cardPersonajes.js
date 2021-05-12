@@ -22,6 +22,7 @@ const CardPersonajes = props => {
 			"https://cdn.vox-cdn.com/thumbor/KnYjrcxAozD5Q8pmr3QAXsJCwag=/1400x1400/filters:format(jpeg)/cdn.vox-cdn.com/uploads/chorus_asset/file/6434955/obi-wan.0.jpg"
 	};
 	const [corazon, setCorazon] = useState(null);
+
 	useEffect(() => {
 		var resultado = store.favoritos.find((elemento, index) => {
 			return elemento == props.name;
@@ -29,22 +30,27 @@ const CardPersonajes = props => {
 
 		setCorazon(resultado);
 	}, [store.favoritos]);
+
 	const hacerClick = () => {
 		if (corazon) {
 			actions.eliminarFavorito(props.name);
 		} else {
 			actions.agregarFavoritos(props.name);
 		}
-		// setHeart(!heart);
 	};
 
 	return (
 		<div>
 			<div className="card cardscroll m-2">
-				<img src={images[props.name]} style={{ width: 286, height: 286 }} className="card-img-top" alt="..." />
+				<img
+					src={`https://starwars-visualguide.com/assets/img/characters/${props.index + 1}.jpg`}
+					style={{ width: 286, height: 286 }}
+					className="card-img-top"
+					alt="..."
+				/>
 				<div className="card-body">
 					<h5 className="card-title">{props.name}</h5>
-					<p className="card-text">Sed pharetra justo tempor, congue purus quis, laoreet urna.</p>
+					<p className="card-text">Es un Gran personaje dentro del universo de Star Wars</p>
 					<div className="d-flex justify-content-between">
 						<Link
 							to={"/singlepersonajes/" + props.index}

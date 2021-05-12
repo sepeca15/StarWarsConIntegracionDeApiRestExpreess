@@ -9,7 +9,7 @@ export const Home = () => {
 	return (
 		<div className="container">
 			<h1 className="m-3 text-danger">Personajes</h1>
-			<div className="scrolling-wrapper-flexbox contenedor">
+			<div className="scrolling-wrapper-flexbox contenedor d-flex">
 				{store.personajes.map((personajes, index) => {
 					return (
 						<div key={index}>
@@ -19,7 +19,7 @@ export const Home = () => {
 				})}
 			</div>
 			<h1 className="m-3 text-danger">Planetas</h1>
-			<div className="scrolling-wrapper-flexbox contenedor">
+			<div className="scrolling-wrapper-flexbox contenedor overflow-x">
 				{store.planetas.map((planetas, index) => {
 					return (
 						<div key={index}>
