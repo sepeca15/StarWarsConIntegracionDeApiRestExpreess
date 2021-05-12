@@ -20,49 +20,28 @@ export const Navbar = () => {
 							</Dropdown.Toggle>
 
 							<Dropdown.Menu>
-								{store.favoritos.length == 0
-									? "No hay favoritos"
-									: store.favoritos.map((favorito, index) => {
-											return (
-												<Dropdown.Item key={index}>
-													{favorito}
+								{store.favoritos.length == 0 ? (
+									<Dropdown.Item className="d-flex justify-content-between align-items-center">
+										<span>No hay favoritos</span>
+									</Dropdown.Item>
+								) : (
+									store.favoritos.map((favorito, index) => {
+										return (
+											<Dropdown.Item key={index}>
+												{favorito}
 
-													<i
-														className="ml-2 far fa-trash-alt"
-														onClick={() => {
-															actions.eliminarFavorito(favorito);
-														}}
-													/>
-												</Dropdown.Item>
-											);
-									  })}
+												<i
+													className="ml-2 far fa-trash-alt"
+													onClick={() => {
+														actions.eliminarFavorito(favorito);
+													}}
+												/>
+											</Dropdown.Item>
+										);
+									})
+								)}
 							</Dropdown.Menu>
 						</Dropdown>
-						{/* <div className="dropdown">
-							<button
-								className="btn btn-outline-secondary text-secondary dropdown-toggle"
-								type="button"
-								id="dropdownMenuButton"
-								data-bs-toggle="dropdown"
-								aria-expanded="false">
-								Favoritos
-							</button>
-							<ul className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-								{store.favoritos.map((favoritos, index) => {
-									return (
-										<li key={index}>
-											{favoritos}{" "}
-											<i
-												className="ml-2 far fa-trash-alt"
-												onClick={() => {
-													actions.eliminarFavorito(favorite);
-												}}
-											/>
-										</li>
-									);
-								})}
-							</ul>
-						</div> */}
 					</div>
 				</div>
 			</nav>
