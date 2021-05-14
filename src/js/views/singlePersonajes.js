@@ -24,14 +24,19 @@ export const SinglePersonajes = props => {
 		"Obi-Wan Kenobi":
 			"https://cdn.vox-cdn.com/thumbor/KnYjrcxAozD5Q8pmr3QAXsJCwag=/1400x1400/filters:format(jpeg)/cdn.vox-cdn.com/uploads/chorus_asset/file/6434955/obi-wan.0.jpg"
 	};
-
+	//{`https://starwars-visualguide.com/assets/img/characters/${props.index + 1}.jpg`}
+	//{images[store.detalles.name]}
+	const uid = parseInt(params.theid, 10) + 1;
 	return (
 		<div className="container">
 			<div>
 				<div className="mb-3">
 					<div className="row no-gutters">
 						<div className="col-md-4">
-							<img src={images[store.detalles.name]} style={{ width: 400, height: 400 }} />
+							<img
+								src={`https://starwars-visualguide.com/assets/img/characters/${uid}.jpg`}
+								style={{ width: 400, height: 400 }}
+							/>
 						</div>
 						<div className="col-md-8 card">
 							<div className="card-body text-center">
@@ -78,7 +83,7 @@ export const SinglePersonajes = props => {
 				</div>
 			</div>
 			<Link to="/">
-				<span className="btn btn-primary btn-lg" href="#" role="button">
+				<span className="btn btn-outline-secondary" href="#" role="button">
 					Back home
 				</span>
 			</Link>

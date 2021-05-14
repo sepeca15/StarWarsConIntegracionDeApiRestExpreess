@@ -80,7 +80,7 @@ export const SinglePlanetas = props => {
 				</div>
 			</div>
 			<Link to="/">
-				<span className="btn btn-primary btn-lg" href="#" role="button">
+				<span className="btn btn-outline-secondary" href="#" role="button">
 					Back home
 				</span>
 			</Link>

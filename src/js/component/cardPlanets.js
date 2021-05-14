@@ -52,7 +52,7 @@ const CardPlanetas = props => {
 					<div className="d-flex justify-content-between">
 						<Link
 							to={"/singleplanetas/" + props.index}
-							className="btn btn-outline-secondary text-secondary">
+							className="btn btn-outline-secondary text-secondary bg-light">
 							Leer mas..
 						</Link>
 						<i

@@ -11,12 +11,12 @@ export const Navbar = () => {
 			<nav className="navbar navbar-light bg-light mb-3 fixed-top">
 				<div className="container">
 					<Link to="/">
-						<img src={StarWars} width="60" height="40" alt="" title="Star Wars Logo" />
+						<img src={StarWars} width="80" height="60" alt="" title="Star Wars Logo" />
 					</Link>
 					<div className="ml-auto">
 						<Dropdown>
-							<Dropdown.Toggle variant="success" id="dropdown-basic">
-								Favoritos {store.favoritos.length}{" "}
+							<Dropdown.Toggle className="btn btn-outline-secondary" variant="" id="dropdown-basic">
+								Favoritos ({store.favoritos.length}){" "}
 							</Dropdown.Toggle>
 
 							<Dropdown.Menu>
@@ -27,7 +27,9 @@ export const Navbar = () => {
 								) : (
 									store.favoritos.map((favorito, index) => {
 										return (
-											<Dropdown.Item key={index}>
+											<Dropdown.Item
+												className="d-flex justify-content-between align-items-center"
+												key={index}>
 												{favorito}
 
 												<i
