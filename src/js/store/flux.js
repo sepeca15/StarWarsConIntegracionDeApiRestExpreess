@@ -54,6 +54,29 @@ const getState = ({ getStore, getActions, setStore }) => {
 				sessionStorage.setItem("token", data.token);
 				setStore({ usuario: data.user });
 			},
+			registro: async (email, pass, fname, lname, uname) => {
+				var myHeaders = new Headers();
+				myHeaders.append("Content-Type", "application/json");
+
+				var raw = JSON.stringify({
+					user_name: uname,
+					first_name: fname,
+					last_name: lname,
+					email: email,
+					password: pass
+				});
+
+				var requestOptions = {
+					method: "POST",
+					headers: myHeaders,
+					body: raw,
+					redirect: "follow"
+				};
+
+				const res = await fetch(process.env.BACKEND_URL + "/user", requestOptions);
+				const data = await res.json();
+				console.log(data);
+			},
 			loadSomeData: async () => {
 				//personajes
 				try {
@@ -61,7 +84,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					const data = await res.json();
 					console.log("Async:", data);
 					setStore({
-						personajes: data.results
+						personajes: data
 					});
 				} catch (error) {
 					console.log(error);
@@ -72,7 +95,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					const data = await res.json();
 					console.log("Async:", data);
 					setStore({
-						planetas: data.results
+						planetas: data
 					});
 				} catch (error) {
 					console.log(error);

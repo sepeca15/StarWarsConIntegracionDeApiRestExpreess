@@ -13,7 +13,7 @@ export const Home = () => {
 				{store.personajes.map((personajes, index) => {
 					return (
 						<div key={index}>
-							<CardPersonajes name={personajes.name} index={index} />
+							<CardPersonajes name={personajes.nombre} index={index} />
 						</div>
 					);
 				})}
@@ -23,7 +23,7 @@ export const Home = () => {
 				{store.planetas.map((planetas, index) => {
 					return (
 						<div key={index}>
-							<CardPlanetas name={planetas.name} index={index} />
+							<CardPlanetas name={planetas.nombre} index={index} />
 						</div>
 					);
 				})}

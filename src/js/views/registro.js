@@ -12,6 +12,13 @@ const Registro = () => {
 
 	const registro = e => {
 		e.preventDefault();
+		actions.registro(
+			email.current.value,
+			pass.current.value,
+			fname.current.value,
+			lname.current.value,
+			uname.current.value
+		);
 	};
 	return (
 		<div className="container">
