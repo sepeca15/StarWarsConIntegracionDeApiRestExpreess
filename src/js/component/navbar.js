@@ -13,9 +13,15 @@ export const Navbar = () => {
 					<Link to="/">
 						<img src={StarWars} width="80" height="60" alt="" title="Star Wars Logo" />
 					</Link>
-					<div className="ml-auto">
+					<div className="ml-auto row">
+						<Link to="/login" className="btn btn-outline-secondary text-secondary bg-light m-1">
+							Sing in
+						</Link>
+						<Link to="/registro" className="btn btn-outline-secondary text-secondary bg-light m-1">
+							Sing up
+						</Link>
 						<Dropdown>
-							<Dropdown.Toggle className="btn btn-outline-secondary" variant="" id="dropdown-basic">
+							<Dropdown.Toggle className="btn btn-outline-secondary m-1" variant="" id="dropdown-basic">
 								Favoritos ({store.favoritos.length}){" "}
 							</Dropdown.Toggle>
 

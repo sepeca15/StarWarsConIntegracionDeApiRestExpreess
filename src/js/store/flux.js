@@ -34,7 +34,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			loadSomeData: async () => {
 				//personajes
 				try {
-					const res = await fetch("https://www.swapi.tech/api/people/");
+					const res = await fetch("https://3001-silver-lemming-ufc7i0g6.ws-us07.gitpod.io/personajes");
 					const data = await res.json();
 					console.log("Async:", data);
 					setStore({
@@ -45,7 +45,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 				//planetas
 				try {
-					const res = await fetch("https://www.swapi.tech/api/planets/");
+					const res = await fetch("https://3001-silver-lemming-ufc7i0g6.ws-us07.gitpod.io/planetas");
 					const data = await res.json();
 					console.log("Async:", data);
 					setStore({
