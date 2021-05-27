@@ -1,43 +1,149 @@
-import React from 'react'
+import React, { useContext, useRef } from "react";
 import { Link } from "react-router-dom";
+import { Context } from "../store/appContext";
 
-const registro = () => {
-    return (
-        <div>
-            <form>
-                <div className="form-row">
-                    <div className="form-group col-md-6">
-                        <label for="inputEmail4">Email</label>
-                        <input type="email" className="form-control" id="inputEmail4" placeholder="pepito@email.com"/>
-                    </div>
-                    <div className="form-group col-md-6">
-                        <label for="inputPassword4">Password</label>
-                        <input type="password" className="form-control" id="inputPassword4" placeholder="********"/>
-                    </div>
-                </div>
-                <div className="form-group">
-                    <label for="inputAddress">First Name</label>
-                    <input type="text" className="form-control" id="inputAddress" placeholder="Pepito" />
-                </div>
-                <div className="form-group">
-                    <label for="inputAddress2">Last Name</label>
-                    <input type="text" className="form-control" id="inputAddress2" placeholder="El pistolero" />
-                </div>
-                <div className="form-row">
-                    <div className="form-group col-md-6">
-                        <label for="inputCity">User Name</label>
-                        <input type="text" className="form-control" id="inputCity" placeholder="Pepistola"/>
-                    </div>
-                </div>
-                <button type="submit" className="btn btn-primary">Sign up</button>
-            </form>
-            <Link
-                to="/"
-                className="btn btn-outline-secondary text-secondary bg-light">
-                Back
+const Registro = () => {
+	const { store, actions } = useContext(Context);
+	var email = useRef();
+	var pass = useRef();
+	var fname = useRef();
+	var lname = useRef();
+	var uname = useRef();
+
+	const registro = e => {
+		e.preventDefault();
+	};
+	return (
+		<div className="container">
+			<form onSubmit={registro}>
+				<div className="form-row mb-5">
+					<div className="form-group col-md-6">
+						<label className="text-light" htmlFor="inputEmail">
+							Email
+						</label>
+						<div className="input-group">
+							<div className="input-group-prepend">
+								<button
+									className="btn"
+									type="button"
+									id="button-addon1"
+									style={{ backgroundColor: "#8A8A8A" }}>
+									| | | | | | | | |
+								</button>
+							</div>
+							<input
+								type="email"
+								className="form-control shadowRed"
+								id="inputEmail"
+								placeholder="pepito@email.com"
+								ref={email}
+							/>
+						</div>
+					</div>
+					<div className="form-group col-md-6">
+						<label className="text-light" htmlFor="inputPassword">
+							Password
+						</label>
+						<div className="input-group">
+							<div className="input-group-prepend">
+								<button
+									className="btn"
+									type="button"
+									id="button-addon1"
+									style={{ backgroundColor: "#8A8A8A" }}>
+									| | | | | | | | |
+								</button>
+							</div>
+							<input
+								type="password"
+								className="form-control shadowBlue"
+								id="inputPassword"
+								placeholder="********"
+								ref={pass}
+							/>
+						</div>
+					</div>
+				</div>
+				<div className="form-row mb-5">
+					<div className="form-group col-md-4">
+						<label className="text-light" htmlFor="inputAddress">
+							First Name
+						</label>
+						<div className="input-group">
+							<div className="input-group-prepend">
+								<button
+									className="btn"
+									type="button"
+									id="button-addon1"
+									style={{ backgroundColor: "#8A8A8A" }}>
+									| | | | | | | | |
+								</button>
+							</div>
+							<input
+								type="text"
+								className="form-control shadowBlue"
+								id="inputAddress"
+								placeholder="Pepito"
+								ref={fname}
+							/>
+						</div>
+					</div>
+					<div className="form-group col-md-4">
+						<label className="text-light" htmlFor="inputAddress2">
+							Last Name
+						</label>
+						<div className="input-group">
+							<div className="input-group-prepend">
+								<button
+									className="btn"
+									type="button"
+									id="button-addon1"
+									style={{ backgroundColor: "#8A8A8A" }}>
+									| | | | | | | | |
+								</button>
+							</div>
+							<input
+								type="text"
+								className="form-control shadowGreen"
+								id="inputAddress2"
+								placeholder="El pistolero"
+								ref={lname}
+							/>
+						</div>
+					</div>
+					<div className="form-group col-md-4">
+						<label className="text-light" htmlFor="inputCity">
+							User Name
+						</label>
+						<div className="input-group">
+							<div className="input-group-prepend">
+								<button
+									className="btn"
+									type="button"
+									id="button-addon1"
+									style={{ backgroundColor: "#8A8A8A" }}>
+									| | | | | | | | |
+								</button>
+							</div>
+							<input
+								type="text"
+								className="form-control shadowRed"
+								id="inputCity"
+								placeholder="Pepistola"
+								ref={uname}
+							/>
+						</div>
+					</div>
+				</div>
+				<button type="submit" className="btn btn-primary mb-4">
+					Sign up
+				</button>
+			</form>
+			<Link to="/" className="btn btn-outline-secondary text-secondary bg-light">
+				Back
 			</Link>
-        </div>
-    )
-}
+		</div>
+	);
+};
 
-export default registro
+export default Registro;

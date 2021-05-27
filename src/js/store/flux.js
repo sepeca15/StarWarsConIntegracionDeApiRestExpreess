@@ -16,7 +16,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 			personajes: [],
 			planetas: [],
 			favoritos: [],
-			detalles: []
+			detalles: [],
+			usuario: null
 		},
 		actions: {
 			agregarFavoritos: Favorito => {
@@ -31,10 +32,32 @@ const getState = ({ getStore, getActions, setStore }) => {
 				});
 				setStore({ favoritos: nuevoFavorito });
 			},
+			login: async (email, pass) => {
+				var myHeaders = new Headers();
+				myHeaders.append("Content-Type", "application/json");
+
+				var raw = JSON.stringify({
+					email: email,
+					password: pass
+				});
+
+				var requestOptions = {
+					method: "POST",
+					headers: myHeaders,
+					body: raw,
+					redirect: "follow"
+				};
+
+				const res = await fetch(process.env.BACKEND_URL + "/login", requestOptions);
+				const data = await res.json();
+				console.log("Async:", data);
+				sessionStorage.setItem("token", data.token);
+				setStore({ usuario: data.user });
+			},
 			loadSomeData: async () => {
 				//personajes
 				try {
-					const res = await fetch("https://3001-silver-lemming-ufc7i0g6.ws-us07.gitpod.io/personajes");
+					const res = await fetch(process.env.BACKEND_URL + "/personajes");
 					const data = await res.json();
 					console.log("Async:", data);
 					setStore({
@@ -45,7 +68,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 				//planetas
 				try {
-					const res = await fetch("https://3001-silver-lemming-ufc7i0g6.ws-us07.gitpod.io/planetas");
+					const res = await fetch(process.env.BACKEND_URL + "/planetas");
 					const data = await res.json();
 					console.log("Async:", data);
 					setStore({
