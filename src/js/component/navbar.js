@@ -15,10 +15,10 @@ export const Navbar = () => {
 					</Link>
 					<div className="ml-auto row">
 						<Link to="/login" className="btn btn-outline-secondary text-secondary bg-light m-1">
-							Sing in
+							Sign in
 						</Link>
 						<Link to="/registro" className="btn btn-outline-secondary text-secondary bg-light m-1">
-							Sing up
+							Sign up
 						</Link>
 						<Dropdown>
 							<Dropdown.Toggle className="btn btn-outline-secondary m-1" variant="" id="dropdown-basic">

@@ -40,7 +40,7 @@ export const SinglePersonajes = props => {
 						</div>
 						<div className="col-md-8 card">
 							<div className="card-body text-center">
-								<h5 className="card-title">{store.detalles.name}</h5>
+								<h5 className="card-title">{store.personajes[params.theid].name}</h5>
 								<p className="card-text">
 									Star Wars is, in short, a single, unified, vast, familiar, astonishingly
 									well-executed story that emerged from the mind of one filmmaker. It is now worth
@@ -62,23 +62,23 @@ export const SinglePersonajes = props => {
 				<div className="row d-flex justify-content-around border-top border-danger">
 					<div className="text-danger mt-1 text-center">
 						<h1>Name</h1>
-						<h2>{store.detalles.name}</h2>
+						<h2>{store.personajes[params.theid].nombre}</h2>
 					</div>
 					<div className="text-danger mt-1 text-center">
 						<h1>Birth Year</h1>
-						<h2>{store.detalles.birth_year}</h2>
+						<h2>{store.personajes[params.theid].fecha_nacimiento}</h2>
 					</div>
 					<div className="text-danger mt-1 text-center">
 						<h1>Gender</h1>
-						<h2>{store.detalles.gender}</h2>
+						<h2>{store.personajes[params.theid].genero}</h2>
 					</div>
 					<div className="text-danger mt-1 text-center">
 						<h1>Height</h1>
-						<h2>{store.detalles.height}</h2>
+						<h2>{store.personajes[params.theid].altura}</h2>
 					</div>
 					<div className="text-danger mt-1 text-center">
 						<h1>Skin Color</h1>
-						<h2>{store.detalles.skin_color}</h2>
+						<h2>{store.personajes[params.theid].color_de_ojo}</h2>
 					</div>
 				</div>
 			</div>
